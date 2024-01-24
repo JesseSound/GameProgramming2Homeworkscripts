@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
         projectile.transform.position = transform.position + direction;
         projectile.GetComponent<Rigidbody2D>().velocity = direction * speed;
         projectile.GetComponent<SpriteRenderer>().color = color;
-        Destroy(projectile, 2.0f);
+        Destroy(projectile, 2.0f); // this means we get fun explosions for EVERY gun choice. Deal with it!
         return projectile;
     }
     void Update()
