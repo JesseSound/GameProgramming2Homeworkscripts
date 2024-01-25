@@ -111,6 +111,11 @@ public class Player : MonoBehaviour
         Destroy(projectile, 2.0f);
         return projectile;
     }
+
+    void Start()
+    {
+         weapon = new Rifle(this);
+    }
     void Update()
     {
         float dt = Time.deltaTime;
@@ -163,7 +168,7 @@ public class Player : MonoBehaviour
        
 
         // define rifle as base
-        weapon = new Rifle(this);
+       
 
 
         if (Input.GetKeyDown(KeyCode.Space))
