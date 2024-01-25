@@ -94,7 +94,7 @@ public class Grenade : Weapon
 
 public class Player : MonoBehaviour
 {
-    
+    public Weapon weapon;
     public GameObject projectilePrefab;
 
     float moveSpeed = 10.0f;    // Move at 10 units per second
@@ -160,17 +160,17 @@ public class Player : MonoBehaviour
         }
 
 
-        //cache weapons here to save time or some kind of fancy wording, 
-        //legit just to avoid calling it every space press
+       
 
-        Weapon[] weaponStore = {new Rifle(this), new Shotgun(this), new Grenade(this) };
+        // define rifle as base
+        weapon = new Rifle(this);
 
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
             //fire function based off the weapon choice, by selecting from the weaponStore array
-            weaponStore[weaponChoice].Fire();
+            weapon.Fire();
         }
 
         transform.position += velocity * moveSpeed * dt;
@@ -189,14 +189,17 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Rifle"))
         {
             weaponChoice = 0;
+            weapon = new Rifle(this);
         }
         else if (collision.CompareTag("Shotgun"))
         {
             weaponChoice = 1;
+            weapon = new Shotgun(this);
         }
         else if (collision.CompareTag("Grenade"))
         {
             weaponChoice= 2;
+            weapon = new Grenade(this);
         }
     }
 }
